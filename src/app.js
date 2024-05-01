@@ -1,7 +1,9 @@
 const express = require('express');
+const cors = require('cors');
 const verifyToken = require('./middleware/verifyAccessToken');
 require("dotenv").config();
 const app = express();
+app.use(cors());
 const PORT = process.env.PORT||2000;
 require('./service/conn');
 app.use(express.json());
