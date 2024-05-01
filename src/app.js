@@ -2,7 +2,7 @@ const express = require('express');
 const verifyToken = require('./middleware/verifyAccessToken');
 require("dotenv").config();
 const app = express();
-const PORT = process.env.PORT || 2000;
+const PORT = process.env.PORT||2000;
 require('./service/conn');
 app.use(express.json());
 
