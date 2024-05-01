@@ -32,7 +32,7 @@ app.get("/getAllStories", getAllStories);
 app.post('/user/register',userRegister);
 app.post('/user/login',userLogin);
 app.post('/user/storyByCategory',verifyToken, postStory);
-app.get('/getStoriesByCategory/',getStories);
+app.get('/getStoriesByCategory/:category',getStories);
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
