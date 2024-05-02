@@ -23,7 +23,7 @@ const userRegister = require("./apis/userRegister.js");
 const userLogin = require("./apis/userLogin.js");
 const getStories = require('./apis/getStories.js');
 const postStory = require('./apis/postStories.js');
-const decryptToken = require('./apis/decryptToken.js');
+const getBookmarks = require('./apis/getBookmarks.js');
 
 // using verifyToken as middleware for authentication
 app.put("/stories/likeStory",verifyToken, likeStory);
@@ -37,7 +37,7 @@ app.post('/user/register',userRegister);
 app.post('/user/login',userLogin);
 app.post('/user/storyByCategory',verifyToken, postStory);
 app.get('/getStoriesByCategory/:category',getStories);
-app.get('/user/decryptToken',verifyToken,decryptToken);
+app.get('/user/getBookmarks',verifyToken,getBookmarks);
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

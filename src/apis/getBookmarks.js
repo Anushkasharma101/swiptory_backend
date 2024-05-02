@@ -2,7 +2,7 @@ const User = require("../models/userDB");
 const dotenv = require('dotenv');
 dotenv.config();
 
-const decryptToken = async (req, res) => {
+const getBookmarks = async (req, res) => {
     try {
         const userId  = req.user.userId
   
@@ -11,11 +11,10 @@ const decryptToken = async (req, res) => {
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
-
-      res.status(200).send({ userId });
+      return res.status(200).send({ bookmarks: user.bookmark });
     } catch (error) {
-      res.status(500).send(error);
+      return res.status(500).send(error);
     }
   };
 
-  module.exports = decryptToken;
+  module.exports = getBookmarks;
