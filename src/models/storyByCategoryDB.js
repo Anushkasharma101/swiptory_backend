@@ -9,6 +9,10 @@ const StoryByCategorySchema = new mongoose.Schema({
   arrayOfStories: {
     type: [
       {
+        _id:{
+          type: mongoose.Schema.Types.ObjectId,
+          default: () => new mongoose.Types.ObjectId()
+        },
         imgUrl: {
           type: String,
           required: true
@@ -29,7 +33,14 @@ const StoryByCategorySchema = new mongoose.Schema({
       }
     ],
     required: true // Ensure arrayOfStories is not empty
-  }
+  },
+  userId:
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Users",
+          require:true,
+        },
+
 });
 
 const StoryByCategory = mongoose.model('StorieByCategories', StoryByCategorySchema);

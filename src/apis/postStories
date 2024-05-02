@@ -41,6 +41,7 @@ const postStory = async (req, res) => {
     const newStory = new StoryByCategory({
       category,
       arrayOfStories,
+      userId
     });
 
     await newStory.save();
