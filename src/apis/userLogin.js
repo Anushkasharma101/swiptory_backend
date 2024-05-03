@@ -22,7 +22,7 @@ const userLogin = async (req, res) => {
       // Generate a JWT token
       const token = jwt.sign({ userId: user._id }, `${process.env.SECREAT_KEY}`);
   
-      res.status(200).send({ token });
+      res.status(200).send({ token, bookmarks: user.bookmark, likes: user.likes});
     } catch (error) {
       res.status(500).send(error);
     }

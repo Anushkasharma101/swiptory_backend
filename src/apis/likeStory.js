@@ -22,8 +22,7 @@ const likeStory = async (req, res) => {
       return res.status(400).json({ message: "Invalid user" });
     }
 
-    const hasLiked = user.likes.includes(storyId);
-
+    const hasLiked = await user.likes.includes(storyId);
     // Update total_likes and user's likes array based on whether the user has already liked the story
     if (hasLiked) {
       // Decrement total_likes and remove storyId from user's likes
@@ -42,8 +41,8 @@ const likeStory = async (req, res) => {
     }
 
     await user.save();
-
-    res.json({ message: "Story like/unlike updated successfully", story:story });
+    await story.save();
+    res.json({ message: "Story like/unlike updated successfully", user:user });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error updating story like" });
